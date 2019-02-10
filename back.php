@@ -1,5 +1,5 @@
 <?php
-    $con = mysql_connect("sql.njit.edu","Accounts");
+    $con = mysqli_connect("sql1.njit.edu","sd744","Kevin12345","cWVQNRNgF");
     if(!$con) {
         die('Could not connect: ' . mysql_error());
     }
