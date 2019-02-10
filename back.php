@@ -1,31 +1,27 @@
 <?php
-    $con = mysqli_connect("sql1.njit.edu","sd744","password","xxxxxxxx");
+
+    $con = mysqli_connect("sql1.njit.edu","sd744","DVDjpHtNw", "sd744");
     if(!$con) {
         die('Could not connect: ' . mysql_error());
     }
-    mysql_select_db("Accounts", $con);
-   
-    $User = $_POST['Username'];
-    $Pass = $_POST['Password'];
-    $check = $_POST['Check'];
-    
-  
-    
-   if ($check == 'student') {
-        
-        $sql = mysql_query("SELECT COUNT(*) FROM StudentLogin SL WHERE Student_ID = '$User' AND Student_PW = '$Pass'");
-        $info = mysql_fetch_assoc($sql);
-        $ver = $info['COUNT(*)'];
-        
-        if ($ver == 1) {
-            session_start();
-            $_SESSION['UserST'] = $User;
-            echo "student connected";
-        }
-        else {
-            header ("Location: http://web.njit.edu/~sd744/CS490/Front/login.html");
-            echo "Invalid Login";
-        } 
-    } 
-    
+
+   $data=json_decode(file_get_contents('php://input'),true);
+   $uname = $data['username'];
+   $pass = $data['password'];
+
+   $sql = mysqli_query($con, "SELECT COUNT(*) FROM Accounts WHERE Username = '$uname' AND Password = '$pass'");
+   $info = mysqli_fetch_assoc($sql);
+   $count = $info['COUNT(*)'];
+
+   $authenticated;
+   if ($count == 1) {
+        $authenticated = true;
+        http_response_code(200);
+   }
+   else {
+        $authenticated = false;
+        http_response_code(401);
+   }
+
+    die (json_encode(array("authenticated" => $authenticated)));
 ?>
