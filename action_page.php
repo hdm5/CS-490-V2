@@ -3,7 +3,7 @@
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-$url = "https://web.njit.edu/~pm347/middleServer.php";
+$url = "https://web.njit.edu/~asv28/middleServer.php";
 
 $ch = curl_init( $url );
 $payload = json_encode( array( "username"=> $username, "password"=>$password) );
