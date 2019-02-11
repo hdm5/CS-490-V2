@@ -8,7 +8,7 @@
     $payload = json_encode( array( "username"=> $UserComp, "password"=>$PassComp) );
     
     # call the back component with username and password received from action page
-    $backurl = "https://web.njit.edu/~pm347/back.php";
+    $backurl = "https://web.njit.edu/~sd744/CS490/back.php";
     $chsession = curl_init( $backurl );
 
     curl_setopt( $chsession, CURLOPT_POSTFIELDS, $payload );
@@ -17,6 +17,7 @@
 
     # Make a request to the back component and return the result to the action page
     $result = curl_exec($chsession);
-    
+    echo "Result = $result";
+
     curl_close($ch);
 ?>
