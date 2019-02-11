@@ -1,19 +1,29 @@
-<!-- NJIT default user homepage version 20070214 -->
-
-<?php
-session_start();
-?>
-
 <html>
 	<head>
 		<title>Hazel Malazarte</title>
-	</head>
-	<body>
+   
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".mybutton").click(function() {
+			$.ajax({
+				type: "post",
+				url: "action_page.php",
+				data: $("form").serialize(),
+				success: function(result) {
+					$(".myresult").html(result);
+				}
+			});
+		});
+	});
+</script>
+</head>
+
+<body>
 
 <h2>Group 8 Login Form</h2>
-
 <div class="container">
-  <form action="action_page.php" method='post'>
+  <form>
     <div class="row">
       <div class="col-25">
         <label for="uname">username: </label>
@@ -33,9 +43,9 @@ session_start();
 
     </div>
     <div class="row">
-      <input type="submit" value="Submit">
-    </div>
   </form>
-</div>
+	<button class="mybutton">Submit</button>
+	<div class="myresult"></div>
+
 </body>
 </html>
