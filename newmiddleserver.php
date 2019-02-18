@@ -56,7 +56,7 @@
         
         
         # Return the NJIT response to frontend
-        die ($response);
+        # die ($response);
         return $returnMsg;
     }
     
