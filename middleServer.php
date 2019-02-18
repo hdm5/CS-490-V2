@@ -15,11 +15,11 @@
   # fall back to backend database if login with njit fails
   if (check_login_njit($username,$password) == true) {
     $authenticated = true;
-    $studentNJIT = "njit";
+    $studentNJIT = "NJIT";
   }
   else if(check_login_backend_db($username,$password) == true) {
     $authenticated = true;
-    $studentNJIT = "database";
+    $studentNJIT = "Database";
   }
   else {
     $authenticated = false;
