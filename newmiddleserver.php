@@ -49,10 +49,10 @@
         
         
         $returnMsg = "";
-		if(strpos($response, "Please select a MyHousing System to sign into")== false)
-			$returnMsg = "NJIT Login Failed"; 
+		if(strpos($response, "User not found in database")== false)			
+            $returnMsg = "NJIT Login Successful";
 		else
-			$returnMsg = "NJIT Login Successful";
+			$returnMsg = "NJIT Login Failed"; 
         
         
         # Return the NJIT response to frontend
