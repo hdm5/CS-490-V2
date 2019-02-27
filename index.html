@@ -1,51 +1,109 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Hazel Malazarte</title>
-   
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$(".mybutton").click(function() {
-			$.ajax({
-				type: "post",
-				url: "action_page.php",
-				data: $("form").serialize(),
-				success: function(result) {
-					$(".myresult").html(result);
-				}
-			});
-		});
-	});
-</script>
-</head>
+<head>
 
+<title>CS 490 Beta</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-img {
+  /* The image used */
+  background-image: url("https://wallpapercave.com/wp/PJ6Kv5d.jpg");
+
+  min-height: 879px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Add styles to the form container */
+.container {
+  max-width: 300px;
+  height: 300px;
+  padding: 16px;
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  background-color: white;
+  text-align: center;
+}
+
+.result {
+  max-width: 300px;
+  position: absolute;
+  top: 60%;
+  left: 45%;
+  background-color: white;
+  text-align: center;
+
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+</style>
+
+	<script type="text/javascript" src="AJAX.js"></script>
+	<script type="text/javascript">
+		/* Usage */
+		window.onload = function (){
+    		AJAXform( 'my-form', 'my-button', 'my-result', 'post' ); 
+		};
+	</script>
+
+</head>
 <body>
 
-<h2>Group 8 Login Form</h2>
-<div class="container">
-  <form>
-    <div class="row">
-      <div class="col-25">
-        <label for="uname">username: </label>
-      </div>
-      <div class="col-75">
-        <input type="text" id="uname" name="username" placeholder="Your username.." required autofocus autocomplete=on>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="psw">password: </label>
-      </div>
-      <div class="col-75">
-        <input type="password" id="psw" name="password" placeholder="Your password.." required autofocus autocomplete=on>
-      </div>
-    </div>
+<div class="bg-img">
+  <form action="action_page.php" id="my-form" class="container">
 
-    </div>
-    <div class="row">
+    <label for="uname"><b>username</b></label>
+    <input type="text" placeholder="Your username..." name="username" required  value="">
+
+    <label for="psw"><b>password</b></label>
+    <input type="password" placeholder="Your password..." name="password" required  value="">
+    
+    <button type="submit" class="btn" id="my-button">Submit</button>
   </form>
-	<button class="mybutton">Submit</button>
-	<div class="myresult"></div>
-
+  
+  <div id="my-result" class="result"></div>
+</div>
 </body>
 </html>
