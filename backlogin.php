@@ -20,14 +20,14 @@
    if ($count == 1) {
         $authenticated = $uname;
         echo "teacher is connected";
-	http_response_code(200);
+	      http_response_code(200);
    }
    else {
         echo "Invalid Login";
-	http_response_code(401);
+	      http_response_code(401);
    }
 }
-   if ($check == 'jsn1'){
+   elseif ($check == 'jsn1'){
    $sql = mysqli_query($con, "SELECT COUNT(*) FROM Accounts WHERE Username = '$uname' AND Password = '$pass'");
    $info = mysqli_fetch_assoc($sql);
    $count = $info['COUNT(*)'];
@@ -36,12 +36,17 @@
    if ($count == 1) {
         $authenticated = $uname;
         echo "student is connected";
-	http_response_code(200);
+	       http_response_code(200);
    }
    else {
         echo "Invalid Login";
-	http_response_code(401);
+	       http_response_code(401);
    }
-   }
+ }
+   else {
+        echo "Invalid Login";
+        http_response_code(401);
+ }
+  
     die (json_encode(array("authenticated" => $authenticated)));
 ?>
