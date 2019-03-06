@@ -4,30 +4,45 @@
     if(!$con) {
         die('Could not connect: ' . mysql_error());
     }
-  
-   $data=json_decode(file_get_contents('php://input'),true); 
-   $uname = $data['username'];
-   $pass = $data['password'];
-   $check = $data['check']
+   //mysqli_select_db( $con);
+   $data=json_decode(file_get_contents('php://input')); 
+   $uname = $data['Username'];
+   $pass = $data['Password'];
+   $check = $data['Check'];
    
-   if ($check == 'jsn45') {
 	
-   $sql = mysqli_query($con, "SELECT COUNT(*) FROM Accounts WHERE Username = '$uname' AND Password = '$pass'");
+   $sql = mysqli_query($con, "SELECT * FROM Accounts WHERE Username = '$uname' AND Password = '$pass'");
    $info = mysqli_fetch_assoc($sql);
-   $count = $info['COUNT(*)'];
+   //$count = $info['Check'];
+   
+   $isexist= mysqli_query($con, "SELECT COUNT(*) FROM Accounts WHERE Username = '$uname' AND Password = '$pass'");
+   $check_user= mysqli_num_rows($isexist);
+   echo $check_user;
+   
+   
   
-   $authenticated;
-   if ($count == 1) {
+   //$authenticated;
+   if ($check_user == '1') {
+       //$_SESSION["count"] = $info['Check'];
+       //$_SESSION["uname"] = $info['uname'];
+       
         $authenticated = $uname;
-        echo "teacher is connected";
+        echo "teacher is connected   ";
 	      http_response_code(200);
    }
+   elseif($check_user == '0' ){
+    
+        $authenticated = $uname;
+        echo "student is connected";
+	       http_response_code(200);
+   
+   }
    else {
-        echo "Invalid Login";
+        echo "****Invalid Login ****";
 	      http_response_code(401);
    }
-}
-   elseif ($check == 'jsn1'){
+/*
+   if ($check_user == '0'){
    $sql = mysqli_query($con, "SELECT COUNT(*) FROM Accounts WHERE Username = '$uname' AND Password = '$pass'");
    $info = mysqli_fetch_assoc($sql);
    $count = $info['COUNT(*)'];
@@ -39,14 +54,12 @@
 	       http_response_code(200);
    }
    else {
-        echo "Invalid Login";
+        echo "Invalid Login**********";
 	       http_response_code(401);
    }
  }
-   else {
-        echo "Invalid Login";
-        http_response_code(401);
- }
   
-    die (json_encode(array("authenticated" => $authenticated)));
+  
+    //die (json_encode(array("authenticated" => $authenticated)));
+  */
 ?>
