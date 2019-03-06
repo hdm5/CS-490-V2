@@ -13,11 +13,14 @@
 	
    $sql = mysqli_query($con, "SELECT * FROM Accounts WHERE Username = '$uname' AND Password = '$pass'");
    $info = mysqli_fetch_assoc($sql);
+   
    //$count = $info['Check'];
    
-   $isexist= mysqli_query($con, "SELECT COUNT(*) FROM Accounts WHERE Username = '$uname' AND Password = '$pass'");
+  $isexist= mysqli_query($con, "SELECT COUNT(*) FROM Accounts WHERE Username = '$uname' AND Password = '$pass'");
    $check_user= mysqli_num_rows($isexist);
-   echo $check_user;
+   //echo $check_user;
+   
+   
    
    
   
@@ -27,10 +30,11 @@
        //$_SESSION["uname"] = $info['uname'];
        
         $authenticated = $uname;
+        echo $uname;
         echo "teacher is connected   ";
 	      http_response_code(200);
    }
-   elseif($check_user == '0' ){
+   elseif($uname == '0' ){
     
         $authenticated = $uname;
         echo "student is connected";
