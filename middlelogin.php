@@ -8,18 +8,18 @@
   
   $Username = "";
   $Password = "";
-  $Check = "";
+  //$Check = "";
 
   if(isset($logindata['Username']))
     $Username = $logindata['Username'];
   if(isset($logindata['Password']))
     $Password = $logindata['Password'];
-  if(isset($logindata['Check']))
-    $Check = $logindata['Check'];
+  //if(isset($logindata['Check']))
+    //$Check = $logindata['Check'];
  
  
     # make a json object of username, password and check        
-    $payload = json_encode(array("Username"=>$Username, "Password"=>$Password,"Check"=>$Check));
+    $payload = json_encode(array("Username"=>$Username, "Password"=>$Password));
     $backendUrl = "https://web.njit.edu/~sd744/backlogin.php";
     $ch = curl_init($backendUrl);
     curl_setopt($ch, CURLOPT_POST, true);
