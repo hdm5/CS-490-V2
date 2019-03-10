@@ -2,19 +2,56 @@
 <style>
 .centered {
   text-align: center;
+  max-width: 500px;
+  margin: auto;
 }
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #009999;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #00e6e6;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: white;
+  padding: 55px;
+  margin: auto;
+}
+
 </style>
 
 <body>
-  <div class="centered">
-    <h1>CS 100 Exam</h1>
-    <h3>Please use <b>4 Spaces to signify 1 Tab</b>, and the suggested variable names when writing your answers</h3>
-    
-    
-    
-    
-    
-  </div>
+<div class="centered">
+  <h2>CS 100 Exam</h2>
+  <h4>Please use 4 Spaces to signify 1 Tab, and use the suggested variable names when writing your answers.</h4>
+    <div class="container">
+      <form action="/action_page.php">
+        <label for="answer">Answer</label>
+          <textarea id="answer" name="answer" placeholder="Write expected answer here..." style="height:200px"></textarea>
+          <input type="submit" value="Submit" style="float: right;">
+        </form>
+  
+    </div>
+</div>
 
 </body>
 </html>
