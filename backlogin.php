@@ -6,26 +6,27 @@
     }
    //mysqli_select_db( $con);
    $data=json_decode(file_get_contents('php://input')); 
-   $uname = $data['Username'];
-   $pass = $data['Password'];
-   $check = $data['Check'];
-   
+   $uname = $data->Username;
+   $pass = $data->Password;
+   $check = $data->check;
+
 	
-   $sql = mysqli_query($con, "SELECT * FROM Accounts WHERE Username = '$uname' AND Password = '$pass'");
-   $info = mysqli_fetch_assoc($sql);
-   
+   $sql = mysqli_query($con, "SELECT * FROM Accounts ");
+   $rows = array();
+   while($info = mysqli_fetch_assoc($sql)){
+        $rows[] = $info;
+   }
    //$count = $info['Check'];
    
-  $isexist= mysqli_query($con, "SELECT COUNT(*) FROM Accounts WHERE Username = '$uname' AND Password = '$pass'");
-   $check_user= mysqli_num_rows($isexist);
-   //echo $check_user;
-   
-   
-   
-   
-  
+  //$isexist= mysqli_query($con, "SELECT * FROM Accounts WHERE Username = '$uname' AND Password = '$pass'");
+  //$isexist= mysqli_query($con, "SELECT Username, Password FROM Accounts " );
+  //$check_user= mysqli_num_rows($isexist);
+  //echo $check_user;
+   //echo $check;
+   echo json_encode($rows);
+    
    //$authenticated;
-   if ($check_user == '1') {
+   if ($check == 1) {
        //$_SESSION["count"] = $info['Check'];
        //$_SESSION["uname"] = $info['uname'];
        
@@ -34,10 +35,10 @@
         echo "teacher is connected   ";
 	      http_response_code(200);
    }
-   elseif($uname == '0' ){
+   elseif($check == 0 ){
     
         $authenticated = $uname;
-        echo "student is connected";
+        //echo "student is connected";
 	       http_response_code(200);
    
    }
@@ -45,7 +46,8 @@
         echo "****Invalid Login ****";
 	      http_response_code(401);
    }
-/*
+ /*
+*******************************************************
    if ($check_user == '0'){
    $sql = mysqli_query($con, "SELECT COUNT(*) FROM Accounts WHERE Username = '$uname' AND Password = '$pass'");
    $info = mysqli_fetch_assoc($sql);
