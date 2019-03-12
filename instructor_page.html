@@ -3,11 +3,9 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body {
-  font-family: Arial;
-  color: black;
+body{
+  text-align: center;
 }
-
 .split {
   height: 100%;
   width: 50%;
@@ -33,7 +31,6 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
 }
 
 /*LEFT SIDE*/
@@ -58,6 +55,21 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
+  background-color: #00e6e6;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #009999;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 30%;
+  opacity: 1;
+}
+
+btn :hover {
   background-color: #00e6e6;
 }
 
@@ -145,6 +157,38 @@ input[type=submit]:hover {
 }
 
 </style>
+
+  <script type="text/javascript" src="../AJAX.js"></script>
+  <script type="text/javascript">
+    /* Usage */
+    window.onload = function (){
+      AJAXform( 'add-questionform', 'my-questionsubbutton', 'my-result', 'post' );
+      
+      /* Topics */
+      AJAXform( 'MethodsForm', 'methods-subbutton', 'filterResult', 'post' );
+      AJAXform( 'StringsForm', 'strings-subbutton', 'filterResult', 'post' );
+      AJAXform( 'ifStatementsForm', 'ifStatements-subbutton', 'filterResult', 'post' );
+      AJAXform( 'forLoopsForm', 'forLoops-subbutton', 'filterResult', 'post' );
+      AJAXform( 'RangeForm', 'Range-subbutton', 'filterResult', 'post' );
+      
+      /* Difficulty */
+      AJAXform( 'EasyForm', 'easy-subbutton', 'filterResult', 'post' );
+      AJAXform( 'MediumForm', 'medium-subbutton', 'filterResult', 'post' );
+      AJAXform( 'HardForm', 'hard-subbutton', 'filterResult', 'post' );
+      
+      /* Keyword */
+      AJAXform( 'KeywordForm', 'keyword-subbutton', 'filterResult', 'post' );
+      
+      /* GetQuestionBank */
+      AJAXform( 'GetQuestionBankForm', 'getQuestionBank-subbutton', 'filterResult', 'post' );
+      
+      /* ViewExamForm */
+      AJAXform( 'ViewExamForm', 'viewExam-subbutton', 'filterResult', 'post' );
+      
+      AJAXform( 'AddExamQuestionForm', 'addExamQuestion-subbutton', 'AddExamQuestionResult', 'post' );
+    };
+  </script>
+
 </head>
 <body>
 
@@ -153,26 +197,24 @@ input[type=submit]:hover {
     <h2>New Question Submission</h2>
     <h4>(**Please use 4 Spaces to signify 1 Tab**)</h4>
       <div class="container">
-        <form action="/action_page.php">
-          <label for="fname">Topic</label>
+        <form action="Frontend/front_add_question.php" id="add-questionform">
+          <label for="topic">Topic</label>
           <input type="text" id="topic" name="topic" placeholder="Input topic...">
       
           <label for="difficulty">Difficulty</label>
-          <select id="difficulty" name="difficulty">
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-          </select>
+          <input type="text" id="difficulty" name="difficulty" placeholder="Input difficulty...">
       
           <label for="question">Question</label>
-          <textarea id="question" name="question" placeholder="Write new question here..." style="height:200px"></textarea>
+          <textarea rows="10" cols="40" textarea id="question" name="question" placeholder="Write new question here..."></textarea>
       
       	<label for="answer">Answer</label>
-          <textarea id="answer" name="answer" placeholder="Write expected answer here..." style="height:200px"></textarea>
-      
-          <input type="submit" value="Submit" style="float: right;">
+        <textarea rows="10" cols="40" textarea id="answer" name="answer" placeholder="Write expected answer here..."></textarea>
+          
+         <label for="questionID">Question ID</label>
+         <input type="text" id="questionID" name="questionID" placeholder="Input questionID...">
+           <button type="submit" class="btn" id="my-questionsubbutton" style="float: right;">Submit</button>
         </form>
-      
+          <div id="my-result" class="result"></div>
       </div>
     
   </div>
@@ -184,28 +226,47 @@ input[type=submit]:hover {
   <div class="dropdown">
       <button class="dropbtn">Topics</button>
       <div class="dropdown-content">
-      <a href="#">Methods</a>
-      <a href="#">Strings</a>
-      <a href="#">if Statements</a>
-      <a href="#">for Loops</a>
-      <a href="#">Range</a>
+      
+      <form action="Frontend/front_get_questionBank.php" id="MethodsForm">
+	        <button type="submit" name='topic' value="Methods" id="methods-subbutton">Methods</button>
+      </form>
+      <form action="Frontend/front_get_questionBank.php" id="StringsForm">
+          <button type="submit" name='topic' value="Strings" id="strings-subbutton">Strings</button>
+      </form>
+      <form action="Frontend/front_get_questionBank.php" id="ifStatementsForm">
+          <button type="submit" name='topic' value="if Statements" id="ifStatements-subbutton">if Statements</button>
+      </form>
+      <form action="Frontend/front_get_questionBank.php" id="forLoopsForm">
+          <button type="submit" name='topic' value="for Loops" id="forLoops-subbutton">for Loops</button>
+      </form>
+      <form action="Frontend/front_get_questionBank.php" id="RangeForm">
+          <button type="submit" name='topic' value="Range" id="Range-subbutton">Range</button>
+      </form>
+      
       </div>
     </div>
 
   <div class="dropdown">
     <button class="dropbtn">Difficulty</button>
     <div class="dropdown-content">
-    <a href="#">Easy</a>
-    <a href="#">Medium</a>
-    <a href="#">Hard</a>
+      <form action="Frontend/front_get_questionBank.php" id="EasyForm">
+	        <button type="submit" name='difficulty' value="Easy" id="easy-subbutton">Easy</button>
+      </form>
+      <form action="Frontend/front_get_questionBank.php" id="MediumForm">
+          <button type="submit" name='difficulty' value="Medium" id="medium-subbutton">Medium</button>
+      </form>
+      <form action="Frontend/front_get_questionBank.php" id="HardForm">
+          <button type="submit" name='difficulty' value="Hard" id="hard-subbutton">Hard</button>
+      </form>
     </div>
   </div>
 
   <div class="dropdown">
     <button class="dropbtn">Search by keyword</button>
       <div class="dropdown-content">
-            <input type="text" placeholder="Input keyword..." name="search">
-            <button type="submit">Submit</i></button>
+          <form action="Frontend/front_get_questionBank.php" id="KeywordForm">
+            <input type="text" name="keyword" placeholder="Input keyword...">
+            <button type="submit" id="keyword-subbutton">Submit</button>
           </form>
       </div>
   </div>
@@ -213,16 +274,28 @@ input[type=submit]:hover {
   <div class="dropdown">
     <button class="dropbtn">Options</button>
     <div class="dropdown-content">
-    <a href="#">Create Exam</a>
-    <a href="#">View Exam</a>
+
+    <form action="Frontend/front_get_questionBank.php" id="GetQuestionBankForm">
+      <button type="submit" id="getQuestionBank-subbutton">View Question Bank</button>
+    </form>
+    
+    <form action="Frontend/front_getExam.php" id="ViewExamForm">
+      <button type="submit" id="viewExam-subbutton">View Exam</button>
+    </form>
+    
     <a href="#">View Grades</a>
-    <a href="#">Update Grades</a>
+    <a href="#">Update Grades/Feedback</a>
     <a href="#">Release Grades</a>
-    <a href="#">Logout</a>
+    <a href="https://web.njit.edu/~hdm5/index.html">Logout</a>
     </div>
   </div>
-
-
+  
+  <div id="filterResult" class="result"></div>
+  <form action="Frontend/front_add_examQuestion.php" id="AddExamQuestionForm">
+    <input type="text" name="QuestionID" placeholder="Input QuestionID...">
+    <button type="submit" id="addExamQuestion-subbutton">Submit</button>
+  </form>
+  <div id="AddExamQuestionResult" class="result"></div>
   </div>
 </div>
      
