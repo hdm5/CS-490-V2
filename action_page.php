@@ -2,10 +2,10 @@
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-$url = "https://web.njit.edu/~asv28/middleServer.php";
+$url = "https://web.njit.edu/~hdm5/Beta/Middle/middleServer.php";
 
 $ch = curl_init( $url );
-$payload = json_encode( array( "username"=> $username, "password"=>$password) );
+$payload = json_encode( array( "username"=> $username, "password"=>$password, "type"=>"login" ));
 curl_setopt( $ch, CURLOPT_POSTFIELDS, $payload );
 curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
@@ -20,9 +20,16 @@ if (!isset($data['authenticated'])) {
 else {
     $authenticate = $data['authenticated'];
     if($authenticate === true) {
-        if (isset($data['studentNJIT'])) {
-	    $var = $data['studentNJIT'];
-            echo "Authentication success, user logged into $var";
+        if (isset($data['check'])) {
+	    $instructor = $data['check'];
+            if ($instructor) {
+		$url = 'https://web.njit.edu/~hdm5/Beta/instructor_page.html';
+		die ('<META HTTP-EQUIV=REFRESH CONTENT="1; '.$url.'">');
+	    }
+	    else {
+		$url = 'https://web.njit.edu/~hdm5/Beta/student_page.html';
+		die ('<META HTTP-EQUIV=REFRESH CONTENT="1; '.$url.'">');
+	    }
      	}	
     }
     else {
