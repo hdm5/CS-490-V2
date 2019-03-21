@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Login</title>
+</head>
+
+<center>
+<h1>Login</h1>
+</center>
+
+<body>
+<center>
+
+<script>
+        function load(UN,PW){
+	    var xhttp = new XMLHttpRequest();
+	    xhttp.onreadystatechange = function()
+		{
+	        if(this.readyState == 4 && this.status == 200)
+			{
+				var j = JSON.parse(this.responseText);
+				if(j.Type == "student")
+				{
+					location.replace("https://web.njit.edu/~bg252/download/Test/Front/studentHome.php");
+				}
+				else if(j.Type == "teacher")
+				{
+					location.replace("https://web.njit.edu/~bg252/download/Test/Front/instructorHome.php");
+				}
+				else if(j.Type == "NONE")
+				{
+					document.getElementById("Database").innerHTML = "Invalid Login. Please try again";
+				}
+				
+	        }
+		};
+	    xhttp.open("POST", "login.php",true);
+	    xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	    xhttp.send('uname='+ UN + '&psw=' + PW);
+        }
+</script>
+
+<form id="formid" action="javascript:load(uname.value,psw.value)" method="post">
+<label for="uname">Username</label>
+<input type="text" id="uname" name="uname" required ><br />
+<label for="psw">Password</label>
+<input type="password" id="psw" name="psw" required><br />
+<button type="submit"> Log on </button>
+</form>
+</center>
+<p id="Database"></p>
+
+</body>
+</html>

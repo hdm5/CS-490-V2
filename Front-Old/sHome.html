@@ -1,0 +1,33 @@
+<html>
+
+	<head>
+		<script src="studentHomeScripts.js"> </script>
+	
+	</head>
+
+	<body onload="loadPage();"> 
+		<h2> Create Exam </h2>
+		<table width="1000">
+			<th align="left"> Available Exams</th>
+			<th align="left"> Posted Scores</th>
+			
+			<tr>
+				<td>
+					<ul id="availableExams" style="list-style-type:none;">
+					</ul>
+				</td>
+				
+				<td>
+					<ul id="postedScores" style="list-style-type:none;">
+					</ul>
+				</td>
+			
+			</tr>
+		
+		</table>
+		
+		<p id="test"> </p>
+		<button id="logout" onclick="logout();"> Logout </button>
+	
+	</body>
+</html>
