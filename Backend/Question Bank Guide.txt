@@ -1,0 +1,193 @@
+Message to Student: Please use the suggested variable names when writing your answers
+
+Question: Write a function called hello() that takes a name (name) as input and prints a personalized welcome message (message).
+Topic: Def
+Difficulty: Easy
+Answer:
+
+def hello (name):
+    message = 'Welcome, ' + name + ', ', to NJIT.'
+
+QuestionID: 1
+
+Question: Write a function called oddCount() that takes a list of numbers (aNumList) as input and returns the number of odd number in a list (result).
+Topic: Def
+Difficulty: Medium
+Answer:
+
+def oddCount (aNumList):
+	result = 0
+	for in in a NumList:
+		if i%2 ==1:
+			result +=1
+	return result
+	
+QuestionID: 2 
+
+Question: Write a function called string_reverse to reverse a string (str1), then return the reversed string (rstr1).
+Topic: Strings
+Difficulty: Medium
+Answer:
+
+def string_reverse(str1):
+    rstr1 = ''
+    index = len(str1)
+    while index > 0:
+        rstr1 += str1[ index - 1 ]
+        index = index - 1
+    return rstr1
+print(string_reverse('1234abcd'))
+QuestionID: 3
+
+Question: Write a function called find_longest_word that takes a list of words (word_list) and returns the length of the longest one (word_len).
+Topic: Strings
+Difficulty: Hard 
+Answer:
+
+def find_longest_word(words_list):
+    word_len = []
+    for n in words_list:
+        word_len.append((len(n), n))
+    word_len.sort()
+    return word_len[-1][1]
+
+QuestionID: 4
+
+Question: Write a function called sum_double, using two, given int values (a and b), return their sum (sum). Unless the two values are the same, then return double their sum.
+Topic: if Statements
+Difficulty: Easy 
+Answer:
+def sum_double(a, b):
+	sum = a + b
+	if a == b:
+		sum = sum * 2
+	return sum
+
+QuestionID: 5
+
+Question: Write a function called addTwo() that takes two int values (a and b) and returns their sum (sum).
+Topic: Methods
+Difficulty: Easy
+Answer:
+def addTwo(a,b):
+	sum = a + b
+	return sum
+QuestionID: 6
+
+Question: Write a function called maxTwo() that takes two integers (a and b) and returns the larger one.
+Topic: if Statements
+Difficulty: Easy
+Answer:
+def maxTwo(a,b):
+	if a > b:
+		return a
+	else
+		return b
+QuestionID: 7
+
+Question: Write a function called twoMin() that takes two integers (a and b) and returns the smaller one.
+Topic: if Statements
+Difficulty: Easy 
+Answer:
+def twoMin(a,b):
+	if a < b:
+		return a
+	else
+		return b
+QuestionID: 8
+ 
+Question: Write a function called prime() that takes a number (n) as a parameter and returns true if the number is prime.
+Topic: for Loops
+Difficulty: Medium
+Answer:
+def prime(n):
+	if (n==1):
+        return False
+    elif (n==2):
+        return True;
+    else:
+        for x in range(2,n):
+            if(n % x==0):
+                return False
+        return True           
+
+QuestionID: 9
+
+Question: Write a Python function called rangeTest() to check whether a number (n) is in a given range.
+Topic: Range
+Difficulty: Medium
+Answer:
+def rangeTest(n):
+    if n in range(3,9):
+        print( " %s is in the range"%str(n))
+    else :
+        print("The number is outside the given range.")
+QuestionID: 10
+
+Question: Write a Python function called string_test that accepts a string (s) and calculate the number of upper case letters (UPPER_CASE) and lower case letters (LOWER_CASE) there are.
+Topic: Strings
+Difficulty: Hard
+Answer: 
+def string_test(s):
+    d={"UPPER_CASE":0, "LOWER_CASE":0}
+    for c in s:
+        if c.isupper():
+           d["UPPER_CASE"]+=1
+        elif c.islower():
+           d["LOWER_CASE"]+=1
+        else:
+           pass
+    print ("Original String : ", s)
+    print ("No. of Upper case characters : ", d["UPPER_CASE"])
+    print ("No. of Lower case Characters : ", d["LOWER_CASE"])
+
+QuestionID: 11
+
+Question: Write a  function called square() that takes an integer (a) and returns is value squared (squared).
+Topic: Methods
+Difficulty: Easy
+Answer:
+def square(a):
+	squared = q**2
+	return squared
+QuestionID: 12
+
+Question: Write a function called multiply() that takes two integers (a and b) and returns the product (product).
+Topic: Methods
+Difficulty: Easy
+Answer:
+def multiply (a,b):
+	product = a * b
+	return product
+QuestionID: 13
+
+Question: Write a function called remainder() that takes two integers (a and b) and returns the remainder (remain).
+Topic: Methods
+Difficulty: Easy
+Answer:
+def remainder(a,b):
+	remain = a%b
+	return remain
+	
+QuestionID: 14
+
+Question: Write a function called addThree() that takes three integers (a, b and c) and returns their sum
+Topic: Methods
+Difficulty: Easy 
+Answer:
+def addThree(a,b,c):
+	sum = a + b + c
+	return sum
+	
+QuestionID: 15
+
+
+/*Question to be Added*/
+Question: Write a function called doubleIT() that returns twice the value of the arguement (n)
+Topic: Methods
+Difficulty: Medium 
+Answer:
+def doubleIT(n):
+    return n*2
+	
+QuestionID: 16
