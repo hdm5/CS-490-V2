@@ -1,0 +1,22 @@
+{
+	"Code": "def%20operator(op%2C%20a%2C%20b)%3A%0A%09if(op%20%3D%3D%20%22%2B%22)%3A%0A%09%09return%20a%20%2B%20b%0A%09elif(op%20%3D%3D%20%22-%22)%3A%0A%09%09return%20a%20-%20b%0A%09elif(op%20%3D%3D%20%22*%22)%3A%0A%09%09return%20a%20*%20b%0A%09elif(op%20%3D%3D%20%22%2F%22)%3A%0A%09%09return%20a%20%2F%20b%0A%09elif(op%20%3D%3D%20%22%25%22)%3A%0A%09%09return%20a%20%25%20b%0A%09else%3A%0A%09%09return%20%22Error%22",
+	"FunctionName": "operator",
+	"UCID": "ad321",
+	"TestID": 3,
+	"Constraints": ["for", "while"],
+	"PR": "return",
+	"Points": 25,
+	"PointsEarned": 20,
+	"AutoGradeComments": "These are comments genereated by the autograde.......",
+	"NumArgs": 3,
+	"TestCases": [{
+		"Input": "+, 5, 7",
+		"Output": "12"
+	}, {
+		"Input": "/, 6, 2",
+		"Output": "3"
+	}, {
+		"Input": "-, 44, 54",
+		"Output": "-10"
+	}]
+}
