@@ -1,0 +1,18 @@
+[
+	{
+		"QuestionID": 2,
+		"Prompt": "write a function",
+		"Topic": "topic",
+		"Difficulty": "diff",
+		"FuncName": "func",
+		"Constraints": "print,while"
+	},
+	{
+		"QuestionID": 3,
+		"Prompt": "write a function",
+		"Topic": "topic",
+		"Difficulty": "diff",
+		"FuncName": "func",
+		"Constraints": "print,while"
+	}
+]
