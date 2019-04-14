@@ -1,0 +1,53 @@
+
+
+
+
+<html>
+	<head>
+		<script src="takeTestScripts.js"> </script>
+		
+		<style>
+			table, th, td 
+			{
+			  border: 1px solid black;
+			}
+		</style>
+		
+		<script>
+			function logout()
+			{
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function(){
+					if(this.readyState == 4 && this.status == 200)
+					{
+						window.location.replace("https://web.njit.edu/~bg252/download/Test/Front/login.html");
+					}
+				};
+				xhttp.open("POST", "https://web.njit.edu/~bg252/download/Test/Front/logout.php",true);
+				xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				xhttp.send();
+			}
+		</script>
+	
+	</head>
+	
+	<body onload="loadPage();">
+		<table id="studentExam" width="800">
+		
+			<tr>
+				<th align="left"> Prompt</th>
+				<th align="left"> Your Code </th>
+			</tr>
+		
+		
+		</table>
+		
+		<button onclick="submitTest();"> JSON </button>
+		
+		<p id="test"> </p>
+		
+		<button id="logout" onclick="logout();"> Logout </button>
+	
+	</body>
+
+</html>
