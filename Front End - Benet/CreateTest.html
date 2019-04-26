@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="createTestScripts.js"> </script> 
+		<style>
+		table, th, td
+		{
+		  border: 1px solid black;
+		}
+		li
+		{
+		  font-size: 120%;
+		}
+		div 
+		{
+		  background-color: white;
+		  width: 30px;
+		  border: 10px solid red;
+		  padding: 10px;
+		  margin: 10px;
+		}
+		</style>
+	</head>
+
+	<body onload="getQuestions();"> 
+		<table width="1000">
+			<th align="left"> Question Bank</th>
+			<th align="left"> Selected Questions </th>
+			
+			<tr>
+				<td width="70%">
+					<ul id="QuestBank" style="list-style-type:none;">
+					</ul>
+				</td>
+				
+				<td width="30%">
+					<table id = "SelQuest" wrap-height="auto">
+						<th align="left"> ID </th>
+						<th align="left"> Points </th>
+					</table>
+				</td>
+			
+			</tr>
+		
+		</table>
+		<div id="total" align="center">
+			0
+		</div>
+		<button id="submit" onclick="createExam();"> Create Exam </button>
+		
+		<p id="test"> 
+		</p>
+		<button onclick="showArray();"> Show </button>
+	
+	</body>
+</html>
